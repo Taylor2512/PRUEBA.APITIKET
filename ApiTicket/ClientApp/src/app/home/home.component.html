@@ -1,0 +1,52 @@
+<h1 id="tableLabel">Weather forecast</h1>
+
+<p>This component demonstrates fetching data from the server.</p>
+
+<p *ngIf="!forecasts"><em>Loading...</em></p>
+<form name="formulario" method="post" action="/send.php">
+  <!-- Campo de entrada de fecha -->
+  Selecciona la fecha deseada:
+  <input type="date" name="fecha" min="2018-03-25" max="2018-05-25" step="2" />
+  <!-- Campo de entrada de hora -->
+  Selecciona la hora deseada:
+  <input type="time" name="hora" min="18:00" max="21:00" step="3600" />
+</form>
+<form name="formulario" method="post" action="/send.php">
+  <!-- Campo de entrada de mes -->
+  Selecciona el mes deseado:
+  <input type="month" name="mes"
+         value="2018-05" min="2018-02" max="2018-06" step="2" />
+  <!-- Campo de entrada de semana -->
+  Selecciona la semana deseada:
+  <input type="week" name="semana"
+         value="2018-W18" min="2018-W10" max="2018-W20" step="2" />
+</form>
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="forecasts">
+  <thead>
+    <tr class="table-dark">
+      <th>Date</th>
+      <th>Temp. (C)</th>
+      <th>Temp. (F)</th>
+      <th>Summary</th>
+      <th>Accion</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let forecast of forecasts">
+      <td>{{ forecast.date }}</td>
+      <td>{{ forecast.temperatureC }}</td>
+      <td>{{ forecast.temperatureF }}</td>
+      <td>{{ forecast.summary }}</td>
+      <td> <button type="button" class="btn btn-primary">
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"></path>
+    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"></path>
+  </svg>
+  Edit
+</button>
+
+      </td>
+    </tr>
+  </tbody>
+</table>
