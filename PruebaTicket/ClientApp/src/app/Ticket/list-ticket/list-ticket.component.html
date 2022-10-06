@@ -1,0 +1,68 @@
+<h1 id="tableLabel">Listado de Tickets</h1>
+<div class="container-fluid col-md-4">
+  <form class="row g-3 needs-validation mt-4 mb-2">
+    <div class="container-fluid col-md-4">
+      <input type="text" class="form-control " id="validationCustom01" >
+
+    </div>
+    <div class="container-fluid col-md-4">
+      <input type="text" class="form-control " id="validationCustom01" >
+
+    </div>
+    <div class="container-fluid col-md-4">
+      <input type="text" class="form-control " id="validationCustom01" >
+
+    </div>
+  </form>
+</div>
+
+
+
+<p *ngIf="!items"><em>Loading...</em></p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="items">
+  <thead >
+    <tr class="bg-dark text-light text-aling-center">
+      <th>Ticket</th>
+      <th>Asunto</th>
+      <th>Solicitante</th>
+      <th>Fecha</th>
+      <th>Accion</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let items of items">
+      <td>{{ items.nameTicket }}-{{items.numberTicket}}</td>
+      <td>{{ items.asunto }}</td>
+      <td>{{ items.persona_solicitante }}</td>
+      <td>{{ items.feca_de_ingreso }}</td>
+      <td><button type="button"class="btn btn-primary " (click)="openPopup(items)">
+        <i class="bi bi-pencil-square"></i>
+      </button></td>
+    </tr>
+  </tbody>
+</table>
+
+<div
+  class="modal"
+  tabindex="-1"
+  role="dialog"
+  [ngStyle]="{'display':displayStyle}">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Editar Ticket</h4>
+      </div>
+      <div class="modal-body">
+ <app-edit-ticket [ticket]="ticket"></app-edit-ticket>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger"
+                (click)="closePopup()">
+
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
