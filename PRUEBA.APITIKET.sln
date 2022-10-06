@@ -13,8 +13,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "INFRASTRUCTURE", "INFRASTRU
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DOMAIN", "DOMAIN\DOMAIN.csproj", "{6F12E6EC-4256-4875-8FB5-8F6A190DDE6F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiTicket", "ApiTicket\ApiTicket.csproj", "{B73AA3BA-DED1-4ABD-95AD-FA5B3A0809B8}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,10 +39,6 @@ Global
 		{6F12E6EC-4256-4875-8FB5-8F6A190DDE6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6F12E6EC-4256-4875-8FB5-8F6A190DDE6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6F12E6EC-4256-4875-8FB5-8F6A190DDE6F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B73AA3BA-DED1-4ABD-95AD-FA5B3A0809B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B73AA3BA-DED1-4ABD-95AD-FA5B3A0809B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B73AA3BA-DED1-4ABD-95AD-FA5B3A0809B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B73AA3BA-DED1-4ABD-95AD-FA5B3A0809B8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

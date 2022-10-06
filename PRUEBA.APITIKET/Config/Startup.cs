@@ -23,6 +23,19 @@ namespace PRUEBA.APITIKET.Config
             builder.Services.AddSwaggerGen();
             await builder.InyectarDependencies();
             await builder.InyectarFormatoJSon();
+
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("Alltodo",
+                                  builder =>
+                                  {
+                                      builder.AllowAnyHeader();
+                                      builder.AllowAnyMethod();
+                                      builder.AllowAnyOrigin();
+
+
+                                  });
+            });
             builder.Services.AddSwaggerGen(options =>
             {
                 options.SwaggerDoc("v1", new OpenApiInfo
@@ -73,7 +86,7 @@ namespace PRUEBA.APITIKET.Config
             }
 
             app.UseHttpsRedirection();
-
+            app.UseCors("Alltodo");
             app.UseAuthorization();
 
             app.MapControllers();
