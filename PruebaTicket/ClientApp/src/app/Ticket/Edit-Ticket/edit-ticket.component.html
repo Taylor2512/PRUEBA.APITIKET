@@ -1,6 +1,6 @@
 <form class="row g-3 needs-validation"   [formGroup]="formB.formTicket">
 
-  {{formB.formTicket.value| json}}
+  <!-- {{formB.formTicket.value| json}} -->
    <div class="col-md-4">
     <label for="validationCustom01" class="form-label">Ticket</label>
     <input type="text" [disabled]="true"
@@ -23,7 +23,17 @@
     <label for="validationCustomUsername" class="form-label">Solicitante</label>
     <div class="input-group has-validation">
 
-      <input type="text" class="form-control" formControlName="solicitante" minlength="5" maxlength="25" value={{ticket?.persona_solicitante}} required>
+      <input type="text" class="form-control" formControlName="persona_solicitante" minlength="5" maxlength="25" value={{ticket?.persona_solicitante}} required>
+      <div class="invalid-feedback">
+       </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <label for="validationCustomUsername" class="form-label">descripcion de licencia	</label>
+    <div class="input-group has-validation">
+
+      <input type="text" class="form-control" formControlName="descripcion_de_licencia" minlength="5" maxlength="25" value={{ticket?.descripcion_de_licencia}} required>
       <div class="invalid-feedback">
        </div>
     </div>

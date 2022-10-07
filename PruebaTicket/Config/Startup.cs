@@ -1,5 +1,6 @@
 ﻿using Microsoft.OpenApi.Models;
 using PruebaTicket.Extensions;
+using System.Reflection;
 
 namespace PruebaTicket.Config
 {
@@ -10,6 +11,7 @@ namespace PruebaTicket.Config
             var builder = WebApplication.CreateBuilder(args);
             await builder.ConfigureServices();
             var app = builder.Build();
+            ///configuraciones de millware
             app = await app.MillwareServices();
             await Task.CompletedTask;
             return app;
@@ -20,9 +22,12 @@ namespace PruebaTicket.Config
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            ///inyeccion de dependcias y configuraciones extras
             await builder.InyectarDependencies();
+            ///inyeccion de formato de json
             await builder.InyectarFormatoJSon();
             builder.Services.AddControllersWithViews();
+            //permisos y privilegios en el acceso a los recursos
             builder.Services.AddCors(options =>
             {
                 options.AddPolicy("Alltodo",
@@ -36,7 +41,7 @@ namespace PruebaTicket.Config
                                   });
             });
             builder.Services.AddSwaggerGen(options =>
-            {
+            {/// solo es para documentacion swageer
                 options.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Version = "v1",
@@ -56,9 +61,9 @@ namespace PruebaTicket.Config
                 });
 
                 // using System.Reflection;
-                /*  var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-                  options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
-
+                //  var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                //  options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
+                /*
                   var XMLAPPLICATION = Path.Combine(AppContext.BaseDirectory, "APLICATION.xml");
                   options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, XMLAPPLICATION));
 

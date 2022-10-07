@@ -1,6 +1,6 @@
 <ng-container>
-  <form class="row g-3 needs-validation" [formGroup]="formB.registroUser"  >
-    {{formB.registroUser.value|json}}
+  <form class="row g-3 needs-validation" [formGroup]="formB.registroTickets"  ng-app="app" ng-controller="ctrl" novalidate >
+    <!-- {{formB.registroTickets.value|json}} -->
     <div class="container-sm ">
       <h5>Generador de Ticket</h5>
 
@@ -8,13 +8,13 @@
 
           <div class="row">
             <div class="col input-group m-2 mb-3">
-               <input type="text" class="form-control"  placeholder="Asunto" maxlength="60" minlength="3" aria-label="Username" aria-describedby="basic-addon1" formControlName="asunto">
+               <input type="text" class="form-control" ng-model="current.input1" ng-required="true" placeholder="Asunto" maxlength="60" minlength="3" aria-label="Username" aria-describedby="basic-addon1" formControlName="asunto">
             </div>
             <div class="col input-group m-2 mb-3">
-              <input type="text" class="form-control" placeholder="persona solicitante" aria-label="Username" maxlength="60" minlength="3"  aria-describedby="basic-addon1" formControlName="persona_solicitante">
+              <input type="text" class="form-control" ng-model="current.input2" ng-required="true" placeholder="persona solicitante" aria-label="Username" maxlength="60" minlength="3"  aria-describedby="basic-addon1" formControlName="persona_solicitante">
            </div>
            <div class="col input-group m-2 mb-3">
-            <input type="text" class="form-control" placeholder="descripcion de la licencia" aria-label="Username" maxlength="30" minlength="3"  aria-describedby="basic-addon1" formControlName="descripcion_de_licencia">
+            <input type="text" class="form-control" ng-model="current.input3"ng-required="true" placeholder="descripcion de la licencia" aria-label="Username" maxlength="30" minlength="3"  aria-describedby="basic-addon1" formControlName="descripcion_de_licencia">
          </div>
 
       </div>
@@ -32,11 +32,11 @@
                       <p></p>
                         </div>
         <div class="col input-group m-2 mb-3">
-          <input type="text" class="form-control"  [disabled]="true" aria-label="Username" aria-describedby="basic-addon1">
+          <input type="text" class="form-control"  [disabled]="true" aria-label="Username" aria-describedby="basic-addon1" value={{registrar}}>
         </div>
 
         <div class="col input-group m-2 mb-3">
-          <button type="button" class="form-control btn btn-primary" (click)=" btnGuardar()"  aria-label="Username" aria-describedby="basic-addon1">Generador</button>
+          <button type="button" class="form-control btn btn-primary" [disabled]="formB.registroTickets.invalid" (click)=" btnGuardar()"  aria-label="Username" aria-describedby="basic-addon1">Generador</button>
         </div>
       </div>
 

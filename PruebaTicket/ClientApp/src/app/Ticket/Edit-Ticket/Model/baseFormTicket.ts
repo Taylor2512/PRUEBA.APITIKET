@@ -14,19 +14,20 @@ export class BaseFormTicket{
   formTicket=this.formB.group({
 
     id:[''],
-    nameticket:[''],
+    nameTicket:[''],
     numberTicket:[''],
       asunto:[''],
-      solicitante:[''],
+      persona_solicitante:[''],
+      descripcion_de_licencia:[''],
       fecha:[''],
       historial:this.formB.array([]),
   });
 
-  registroUser= this.formB.group({
-    asunto:['',Validators.required] ,
+  registroTickets= this.formB.group({
+    asunto:[''] ,
 
-    persona_solicitante:['',Validators.required] ,
-    descripcion_de_licencia:['',Validators.required] ,
+    persona_solicitante:['' ] ,
+    descripcion_de_licencia:[''] ,
   });
 
   setearValores(){
@@ -59,8 +60,8 @@ export class BaseFormTicket{
    if (this.formTicket.value.id === null || this.formTicket.value.id  === '' ) {
     this.formTicket.controls.id.setValue(ticket?.id);
  }
-   if (this.formTicket.value.solicitante === null || this.formTicket.value.solicitante  === '' ) {
-     this.formTicket.controls.solicitante.setValue(ticket?.persona_solicitante);
+   if (this.formTicket.value.persona_solicitante === null || this.formTicket.value.persona_solicitante  === '' ) {
+     this.formTicket.controls.persona_solicitante.setValue(ticket?.persona_solicitante);
    }
    if (this.formTicket.value.fecha === null || this.formTicket.value.fecha  === '' ) {
     this.formTicket.controls.fecha.setValue(ticket?.feca_de_ingreso);
@@ -70,6 +71,9 @@ export class BaseFormTicket{
 }
 if (this.formTicket.value.numberTicket === null || this.formTicket.value.numberTicket  === '' ) {
   this.formTicket.controls.numberTicket.setValue(ticket?.numberTicket);
+}
+if (this.formTicket.value.descripcion_de_licencia === null || this.formTicket.value.descripcion_de_licencia  === '' ) {
+  this.formTicket.controls.descripcion_de_licencia.setValue(ticket?.descripcion_de_licencia);
 }
 
   }

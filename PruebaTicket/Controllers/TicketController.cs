@@ -10,14 +10,22 @@ namespace PruebaTicket.Controllers
     [Route("api/[controller]")]
     [ApiController]
     public class TicketController : ControllerBase
-    {
+    {/// <summary>
+    /// interfaz de inyeccion con dependencias scope
+    /// </summary>
         private ITicketServices servicio;
 
         public TicketController(ITicketServices servicio)
         {
             this.servicio = servicio;
         }
-
+        /// <summary>
+        /// Metodo generico para realizar gets
+        /// </summary>
+        /// <param name="fechaini"></param>
+        /// <param name="fechaFinal"></param>
+        /// <param name="usuario"></param>
+        /// <returns></returns>
         [HttpGet]
         public async Task<IActionResult> GetAllTicket(DateTime? fechaini,DateTime? fechaFinal, string? usuario)
         {
@@ -39,6 +47,11 @@ namespace PruebaTicket.Controllers
             return Ok(encontrado);
           
         }
+        /// <summary>
+        /// Metodo para obtener el ticket por id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("{id}")]
 
         public async Task<IActionResult> GetForIdTicket(Guid id)
@@ -46,12 +59,22 @@ namespace PruebaTicket.Controllers
             Tikect encontrado = await servicio.GetForIdTicket(id);
             return Ok(encontrado);
         }
+        /// <summary>
+        /// metodo para insertar el ticket
+        /// </summary>
+        /// <param name="entidad"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> PostTikect(TikectPost entidad)
         {
             Tikect encontrado = await  servicio.PostTicket(entidad);
             return Ok(encontrado);
         }
+        /// <summary>
+        /// metodo para actualizar el ticket y sus incidencias en el detalle
+        /// </summary>
+        /// <param name="entidad"></param>
+        /// <returns></returns>
         [HttpPut]
         public async Task<IActionResult> PutTicket(TikectPut entidad)
         {

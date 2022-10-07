@@ -47,7 +47,7 @@ namespace APLICATION.Servicios
         public async Task<Tikect> UpdateTicket(TikectPut entidad)
         {
             var mapeo=mapper.Map<Tikect>(entidad);
-            return await repository.UpdateTicket(mapeo);
+            return mapeo= await repository.UpdateTicket(mapeo);
         }
     }
 }

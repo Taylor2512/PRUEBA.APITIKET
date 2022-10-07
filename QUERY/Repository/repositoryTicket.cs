@@ -88,8 +88,9 @@ namespace QUERY.Repository
         }
          public async Task<Tikect> UpdateTicket(Tikect entidad)
         {
-            if (!await ifExist(entidad.Id))
+            if (await ifExist(entidad.Id))
             {
+                var encontrado = await GetForIdTicket(entidad.Id);
             
                 if(entidad.historial!=null&& entidad.historial.Count() > 0)
                 {
@@ -100,8 +101,13 @@ namespace QUERY.Repository
 
                     });
                     await _context.SaveChangesAsync();
+                    encontrado.historial = entidad.historial;
                 }
-                entidad = await _context.UdateDB(entidad);
+                encontrado.asunto = entidad.asunto?? entidad.asunto;
+                encontrado.persona_solicitante = entidad.persona_solicitante ?? entidad.persona_solicitante;
+                encontrado.descripcion_de_licencia = entidad.descripcion_de_licencia ?? entidad.descripcion_de_licencia;
+                entidad = await _context.UdateDB(encontrado);
+                entidad = encontrado;
                 return entidad;
 
             }

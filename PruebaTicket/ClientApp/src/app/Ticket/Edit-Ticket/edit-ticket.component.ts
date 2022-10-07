@@ -4,6 +4,9 @@ import { Ticket } from '../Model/TicketDto';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { BaseFormTicket } from './Model/baseFormTicket';
 import { pipe } from 'rxjs';
+import { TicketServices } from '../Service/TickectService';
+import { Router } from '@angular/router';
+import { ApiRoute } from 'src/app/Shared/Route/ApiRoute';
 
 @Component({
   selector: 'app-edit-ticket',
@@ -13,7 +16,10 @@ import { pipe } from 'rxjs';
 export class EditTicketComponent implements OnInit {
 
   @Input()ticket?:Ticket;
-   constructor(public formB: BaseFormTicket,) {   }
+   constructor(public formB: BaseFormTicket,
+    private router: Router,
+
+    private apiServi:TicketServices) {   }
 
     @Input('init')
    count: number = 0;
@@ -50,16 +56,20 @@ this.formB.setearValores();
   }
   getData(ticket?: Ticket){
 
-    // this.formB.formTicket.controls.asunto.setValue(ticket?.asunto);
-    // this.formB.formTicket.controls.solicitante.setValue(ticket?.persona_solicitante);
 
-    // console.log('dd')
-    // console.log(ticket?.asunto)
-   this.formB.validatData(ticket);
-
+  this.formB.validatData(ticket);
+   this.PutTicket();
+   this.formB.setearValores();
+    window.location.reload();
    }
+   PutTicket() {
+    const form: Ticket = this.formB.formTicket.value;
+       this.apiServi.putTicket(form).subscribe((res: any) => {
+        window.location.reload();
 
 
+     });
+  }
   eliminarArray(i:number){
     this.formB.removeItems(i);
   }

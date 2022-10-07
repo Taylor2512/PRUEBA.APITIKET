@@ -2,6 +2,10 @@
 {
     public class Historial : DatosSeguridad
     {
+        public Historial()
+        {
+        }
+
         public Historial(Guid id) : base(id)
         {
         }

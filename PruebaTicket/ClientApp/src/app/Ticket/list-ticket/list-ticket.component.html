@@ -1,21 +1,39 @@
-<h1 id="tableLabel">Listado de Tickets</h1>
-<div class="container-fluid col-md-4">
-  <form class="row g-3 needs-validation mt-4 mb-2">
-    <div class="container-fluid col-md-4">
-      <input type="text" class="form-control " id="validationCustom01" >
 
-    </div>
-    <div class="container-fluid col-md-4">
-      <input type="text" class="form-control " id="validationCustom01" >
+<form [formGroup]="formB.obtenerBuscador" class= "row  needs-validation" >
+  <h4>Buscadores</h4>
+   <div class="col-md-3">
+    <label for="validationCustom01" class="form-label">Fecha inicio</label>
+    <input type="datetime-local" id="meeting-time"
+    name="meeting-time" value="2018-06-12T19:30"
+    min="2018-06-07T00:00"
+    class="form-control"
+    formControlName="fechaini"
+    >
 
-    </div>
-    <div class="container-fluid col-md-4">
-      <input type="text" class="form-control " id="validationCustom01" >
+   </div>
+   <div class="col-md-3">
+    <label for="validationCustom01" class="form-label">Fecha fin</label>
+    <input type="datetime-local" id="meeting-time"
+    name="meeting-time" value="2018-06-12T19:30"
+    min="2018-06-07T00:00"
+    class="form-control"
+    formControlName="fechaFinal"
+    >
 
-    </div>
-  </form>
-</div>
+   </div>
+   <div class="col-md-4 mb-3">
+    <label for="validationCustom01" class="form-label">Nombre</label>
+    <input type="text" class="form-control"
+    formControlName="Foruser"
+    >
 
+   </div>
+   <div class="col input-group m-4">
+   <button type="button" class="form-control btn btn-primary"     formControlName="fechaini"
+   (click)=" buscar()">buscar</button>
+ </div>
+
+</form>
 
 
 <p *ngIf="!items"><em>Loading...</em></p>
@@ -26,6 +44,7 @@
       <th>Ticket</th>
       <th>Asunto</th>
       <th>Solicitante</th>
+      <th>descripcion de licencia</th>
       <th>Fecha</th>
       <th>Accion</th>
     </tr>
@@ -35,6 +54,7 @@
       <td>{{ items.nameTicket }}-{{items.numberTicket}}</td>
       <td>{{ items.asunto }}</td>
       <td>{{ items.persona_solicitante }}</td>
+      <td>{{ items.descripcion_de_licencia }}</td>
       <td>{{ items.feca_de_ingreso }}</td>
       <td><button type="button"class="btn btn-primary " (click)="openPopup(items)">
         <i class="bi bi-pencil-square"></i>

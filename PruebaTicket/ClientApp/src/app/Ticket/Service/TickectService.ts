@@ -17,7 +17,11 @@ export class TicketServices{
       form
     );
   }
-  GetDataTicket(): Observable<any> {
+  GetDataTicket(query?:string): Observable<any> {
+    if(query!=null){
+      return this.http.get<any>(`${this.urlApi}${this.url}${query}`);
+
+    }
     return this.http.get<any>(`${this.urlApi}${this.url}`);
   }
   PostTicket(form: Ticket): Observable<any> {
