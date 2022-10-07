@@ -3,6 +3,7 @@ import { Component, Inject, Input, OnInit } from '@angular/core';
 import { Ticket } from '../Model/TicketDto';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { BaseFormTicket } from './Model/baseFormTicket';
+import { pipe } from 'rxjs';
 
 @Component({
   selector: 'app-edit-ticket',
@@ -12,32 +13,22 @@ import { BaseFormTicket } from './Model/baseFormTicket';
 export class EditTicketComponent implements OnInit {
 
   @Input()ticket?:Ticket;
-  constructor(    public formB: BaseFormTicket,
+   constructor(public formB: BaseFormTicket,) {   }
 
-
-    ) {
-
-
-this.formB.ticket=this.ticket;
-   }
-
-   @Input('init')
+    @Input('init')
    count: number = 0;
-
+ bandera:boolean=false;
    increment() {
-    this.formB.ticket=this.ticket;
 
-    this.formB.setFormulario(this.ticket);
+    this.formB.setFormulario();
+    console.log( "sdsd")
    }
 
    decrement() {
      this.count--;
    }
   ngOnInit(): void {
-    this.formB.ticket=this.ticket;
-    this.formB.setFormulario(this.ticket);
-
-
+this.formB.setearValores();
    }
 
   displayStyle = "none";
@@ -48,6 +39,26 @@ this.formB.ticket=this.ticket;
   closeDetalle() {
     this.displayStyle = "none";
   }
+
+  public  validarValores() {
+    if (this.formB.formTicket.value.asunto === null || this.formB.formTicket.value.asunto  === '' ) {
+        console.log('estan vacios');
+      }else{
+        console.log('esta lleno');
+
+      }
+  }
+  getData(ticket?: Ticket){
+
+    // this.formB.formTicket.controls.asunto.setValue(ticket?.asunto);
+    // this.formB.formTicket.controls.solicitante.setValue(ticket?.persona_solicitante);
+
+    // console.log('dd')
+    // console.log(ticket?.asunto)
+   this.formB.validatData(ticket);
+
+   }
+
 
   eliminarArray(i:number){
     this.formB.removeItems(i);

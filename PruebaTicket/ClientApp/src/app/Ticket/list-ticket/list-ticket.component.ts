@@ -25,11 +25,11 @@ export class ListTicketComponent {
 
    openPopup(ticket: Ticket) {
     this.ticket=ticket;
-     console.log(ticket.asunto);
 
      this.displayStyle = "block";
    }
    closePopup() {
+    this.ticket==null;
      this.displayStyle = "none";
    }
 }

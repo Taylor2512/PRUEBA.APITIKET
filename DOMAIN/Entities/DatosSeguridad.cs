@@ -13,9 +13,15 @@ namespace DOMAIN.Entities
 {
     public class DatosSeguridad : Entity<Guid>
     {
+      
         public DatosSeguridad(Guid id) : base(id)
         {
         }
+
+        public DatosSeguridad()
+        {
+        }
+
 
         [Column(TypeName = "DATETIME")]
         public DateTime feca_de_ingreso { get; set; }

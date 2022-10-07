@@ -12,6 +12,7 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { EditTicketComponent } from './Ticket/edit-ticket/edit-ticket.component';
 import { ListTicketComponent } from './Ticket/list-ticket/list-ticket.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CreateTicketComponent } from './Ticket/create-ticket/create-ticket.component';
 
  @NgModule({
   declarations: [
@@ -22,13 +23,14 @@ import { ReactiveFormsModule } from '@angular/forms';
     FetchDataComponent,
     EditTicketComponent,
     ListTicketComponent,
+    CreateTicketComponent,
     //
    ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
-
     ReactiveFormsModule,
+    FormsModule,
      RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },

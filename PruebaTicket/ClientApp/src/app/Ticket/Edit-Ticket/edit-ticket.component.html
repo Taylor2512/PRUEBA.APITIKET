@@ -1,7 +1,7 @@
-<form class="row g-3 needs-validation"  [formGroup]="formB.formTicket">
+<form class="row g-3 needs-validation"   [formGroup]="formB.formTicket">
 
   {{formB.formTicket.value| json}}
-  <div class="col-md-4">
+   <div class="col-md-4">
     <label for="validationCustom01" class="form-label">Ticket</label>
     <input type="text" [disabled]="true"
      value={{ticket?.nameTicket}}-{{ticket?.numberTicket}} class="form-control" >
@@ -12,7 +12,7 @@
 
   <div class="col-md-4">
     <label for="validationCustom02" class="form-label">Asunto</label>
-    <input type="text" class="form-control" id="validationCustom01"formControlName="asunto" value={{ticket?.asunto}}required>
+    <input type="text" class="form-control" formControlName="asunto" minlength="5" maxlength="25"  value={{ticket?.asunto}} required>
     <div class="valid-feedback">
 
     </div>
@@ -23,10 +23,9 @@
     <label for="validationCustomUsername" class="form-label">Solicitante</label>
     <div class="input-group has-validation">
 
-      <input type="text" class="form-control" formControlName="solicitante" id="validationCustom01" value={{ticket?.persona_solicitante}} required>
+      <input type="text" class="form-control" formControlName="solicitante" minlength="5" maxlength="25" value={{ticket?.persona_solicitante}} required>
       <div class="invalid-feedback">
-        Please choose a username.
-      </div>
+       </div>
     </div>
   </div>
   <div class="row g-2">
@@ -35,17 +34,17 @@
       <i class="bi bi-plus-square"></i>
     </button>
     <p class="col-md-4 m-l-2">Agregar detalles</p>
-    <ng-container formArrayName="detallle">
+    <ng-container formArrayName="historial">
       <ng-container *ngFor="let item of formB.getDetalleTicket.controls; let i =index">
         <ng-container  [formGroupName]="i">
 
           <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Usuario Soporte</label>
-            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name user" formControlName="usuario_soporte">
+            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name user" minlength="5" maxlength="25"  formControlName="usuario_soporte">
           </div>
           <div class="mb-3">
             <label for="exampleFormControlTextarea1" class="form-label">describir incidencia</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" formControlName="comentario_trabajo_realizado"></textarea>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"  minlength="5" maxlength="150" formControlName="comentario_trabajo_realizado"></textarea>
           </div>
 
           <!-- <input type="text" formControlName="usuario_soporte">
@@ -56,6 +55,7 @@
     </ng-container>
 </div>
   <div class="col-12">
-    <button class="btn btn-primary" type="submit">Submit form</button>
+    <button class="btn btn-primary" (click)="getData(ticket)" type="button">Submit form</button>
   </div>
 </form>
+<!-- <p *ngIf="bandera==false&&ticket">{{getData(ticket)}}</p> -->

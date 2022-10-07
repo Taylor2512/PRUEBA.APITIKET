@@ -8,8 +8,6 @@
 
   <ItemGroup>
     <Folder Include="Config\" />
-    <Folder Include="Dtos\" />
-    <Folder Include="Interfaces\Servicios\" />
   </ItemGroup>
 
   <ItemGroup>

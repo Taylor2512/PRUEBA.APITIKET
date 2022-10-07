@@ -1,5 +1,7 @@
-﻿using DOMAIN.Entities;
+﻿using DOMAIN.Dtos;
+using DOMAIN.Entities;
 using DOMAIN.Interfaces.Repository;
+using DOMAIN.Interfaces.Servicios;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,9 +11,9 @@ namespace PruebaTicket.Controllers
     [ApiController]
     public class TicketController : ControllerBase
     {
-        private IrepositoryTicket servicio;
+        private ITicketServices servicio;
 
-        public TicketController(IrepositoryTicket servicio)
+        public TicketController(ITicketServices servicio)
         {
             this.servicio = servicio;
         }
@@ -41,17 +43,17 @@ namespace PruebaTicket.Controllers
 
         public async Task<IActionResult> GetForIdTicket(Guid id)
         {
-            var encontrado = await servicio.GetForIdTicket(id);
+            Tikect encontrado = await servicio.GetForIdTicket(id);
             return Ok(encontrado);
         }
         [HttpPost]
-        public async Task<IActionResult> PostTikect(Tikect entidad)
+        public async Task<IActionResult> PostTikect(TikectPost entidad)
         {
-           var encontrado= await  servicio.PostTicket(entidad);
+            Tikect encontrado = await  servicio.PostTicket(entidad);
             return Ok(encontrado);
         }
         [HttpPut]
-        public async Task<IActionResult> GetAllTicket(Tikect entidad)
+        public async Task<IActionResult> PutTicket(TikectPut entidad)
         {
            var encontrado= await  servicio.UpdateTicket(entidad);
             return Ok(encontrado);

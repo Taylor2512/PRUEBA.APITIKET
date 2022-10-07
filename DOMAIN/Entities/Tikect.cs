@@ -10,17 +10,23 @@ namespace DOMAIN.Entities
 {
     public class Tikect : DatosSeguridad
     {
+       
+
+        public Tikect()
+        {
+        }
+
         public Tikect(Guid id) : base(id)
         {
         }
-         
-        public string nameTicket { get; set; }
 
-        public long numberTicket { get; set; }
-        public string asunto { set; get; }
-        public string persona_solicitante { set; get; }
-        public string descripcion_de_licencia { set; get; }
-        public List<Historial> historial { set; get; }
+        public string? nameTicket { get; set; } = "CTE";
+
+        public long? numberTicket { get; set; }
+        public string? asunto { set; get; }
+        public string? persona_solicitante { set; get; }
+        public string? descripcion_de_licencia { set; get; }
+        public List<Historial?>? historial { set; get; }
 
 
 
